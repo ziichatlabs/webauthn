@@ -10,7 +10,7 @@ PublicKeyCredentialParameters _$PublicKeyCredentialParametersFromJson(
         Map json) =>
     PublicKeyCredentialParameters(
       type: $enumDecode(_$PublicKeyCredentialTypeEnumMap, json['type']),
-      alg: json['alg'] as int,
+      alg: (json['alg'] as num).toInt(),
     );
 
 Map<String, dynamic> _$PublicKeyCredentialParametersToJson(

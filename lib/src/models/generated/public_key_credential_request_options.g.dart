@@ -11,7 +11,7 @@ PublicKeyCredentialRequestOptions _$PublicKeyCredentialRequestOptionsFromJson(
     PublicKeyCredentialRequestOptions(
       challenge:
           const Uint8ListConverter().fromJson(json['challenge'] as String),
-      timeout: json['timeout'] as int? ?? 0,
+      timeout: (json['timeout'] as num?)?.toInt() ?? 0,
       rpId: json['rpId'] as String?,
       allowCredentials: (json['allowCredentials'] as List<dynamic>?)
               ?.map((e) => PublicKeyCredentialDescriptor.fromJson(
