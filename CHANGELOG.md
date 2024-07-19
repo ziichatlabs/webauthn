@@ -1,3 +1,7 @@
+## 0.2.4
+
+* Updating dependencies to remove remove local_auth_ios in favor of local_auth_darwin
+
 ## 0.2.3
 
 * Fixing typos in some comments.
