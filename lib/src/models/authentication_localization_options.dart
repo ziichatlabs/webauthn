@@ -1,5 +1,5 @@
 import 'package:local_auth_android/local_auth_android.dart';
-import 'package:local_auth_ios/types/auth_messages_ios.dart';
+import 'package:local_auth_darwin/types/auth_messages_ios.dart';
 import 'package:local_auth_windows/types/auth_messages_windows.dart';
 
 /// Options to pass custom localized strings to the LocalAuth plugin

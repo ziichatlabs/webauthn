@@ -21,7 +21,7 @@ PublicKeyCredentialCreationOptions _$PublicKeyCredentialCreationOptionsFromJson(
                   Map<String, dynamic>.from(e as Map)))
               .toList() ??
           [],
-      timeout: json['timeout'] as int? ?? 0,
+      timeout: (json['timeout'] as num?)?.toInt() ?? 0,
       excludeCredentials: (json['excludeCredentials'] as List<dynamic>?)
           ?.map((e) => PublicKeyCredentialDescriptor.fromJson(
               Map<String, dynamic>.from(e as Map)))
