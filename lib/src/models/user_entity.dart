@@ -1,8 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:json_annotation/json_annotation.dart';
-
-import 'converters/uint8list_converter.dart';
+import '../models/converters/user_id_converter.dart';
 
 part 'generated/user_entity.g.dart';
 
@@ -16,7 +15,7 @@ class UserEntity {
     required this.name,
   });
 
-  @Uint8ListConverter()
+  @UserIdConverter()
   Uint8List id;
   String displayName;
   String name;

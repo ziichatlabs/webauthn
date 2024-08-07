@@ -7,14 +7,14 @@ part of '../user_entity.dart';
 // **************************************************************************
 
 UserEntity _$UserEntityFromJson(Map<String, dynamic> json) => UserEntity(
-      id: const Uint8ListConverter().fromJson(json['id'] as String),
+      id: const UserIdConverter().fromJson(json['id'] as String),
       displayName: json['displayName'] as String,
       name: json['name'] as String,
     );
 
 Map<String, dynamic> _$UserEntityToJson(UserEntity instance) =>
     <String, dynamic>{
-      'id': const Uint8ListConverter().toJson(instance.id),
+      'id': const UserIdConverter().toJson(instance.id),
       'displayName': instance.displayName,
       'name': instance.name,
     };
