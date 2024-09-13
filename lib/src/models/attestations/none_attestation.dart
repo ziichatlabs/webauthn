@@ -32,11 +32,13 @@ class NoneAttestation extends Attestation {
   /// @see https://www.w3.org/TR/webauthn/#sctn-none-attestation
   @override
   Uint8List asCBOR() {
-    final encoded = cbor.encode(CborMap({
-      CborString('authData'): CborBytes(authData),
-      CborString('fmt'): CborString(format),
-      CborString('attStmt'): CborMap({}),
-    }));
+    final encoded = cbor.encode(
+      CborMap({
+        CborString('authData'): CborBytes(authData),
+        CborString('fmt'): CborString(format),
+        CborString('attStmt'): CborMap({}),
+      }),
+    );
     return Uint8List.fromList(encoded);
   }
 }

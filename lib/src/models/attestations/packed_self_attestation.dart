@@ -3,10 +3,10 @@ import 'dart:typed_data';
 
 import 'package:cbor/cbor.dart';
 
-import '../attestation.dart';
-import '../../helpers/base64.dart';
 import '../../enums/attestation_type.dart';
+import '../../helpers/base64.dart';
 import '../../util/webauthn_cryptography.dart';
+import '../attestation.dart';
 
 class PackedSelfAttestation extends Attestation {
   final Uint8List signature;
@@ -38,14 +38,16 @@ class PackedSelfAttestation extends Attestation {
   /// @see https://www.w3.org/TR/webauthn/#sctn-packed-attestation
   @override
   Uint8List asCBOR() {
-    final encoded = cbor.encode(CborMap({
-      CborString('authData'): CborBytes(authData),
-      CborString('fmt'): CborString(format),
-      CborString('attStmt'): CborMap({
-        CborString('alg'): CborValue(WebauthnCryptography.signingAlgoId),
-        CborString('sig'): CborBytes(signature),
+    final encoded = cbor.encode(
+      CborMap({
+        CborString('authData'): CborBytes(authData),
+        CborString('fmt'): CborString(format),
+        CborString('attStmt'): CborMap({
+          CborString('alg'): CborValue(WebauthnCryptography.signingAlgoId),
+          CborString('sig'): CborBytes(signature),
+        }),
       }),
-    }));
+    );
     return Uint8List.fromList(encoded);
   }
 }

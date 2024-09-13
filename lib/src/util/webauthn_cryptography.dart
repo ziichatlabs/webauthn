@@ -78,8 +78,11 @@ class WebauthnCryptography {
 
   /// Sign [data] using the provided [signer]. If no [signer] is specified
   /// used the provided [privateKey] to create a new signer.
-  Uint8List performSignature(Uint8List data,
-      {PrivateKey? privateKey, Signer<PrivateKey>? signer}) {
+  Uint8List performSignature(
+    Uint8List data, {
+    PrivateKey? privateKey,
+    Signer<PrivateKey>? signer,
+  }) {
     if (signer == null) {
       // Create our signer
       if (privateKey == null) {
@@ -95,7 +98,10 @@ class WebauthnCryptography {
 
   /// Verify that [signature] matches the [data] with the given [publicKey].
   bool verifySignature(
-      PublicKey publicKey, Uint8List data, Uint8List signature) {
+    PublicKey publicKey,
+    Uint8List data,
+    Uint8List signature,
+  ) {
     final verifier = createVerifier(publicKey);
     return verifier.verify(data, Signature(DERToSignature(signature)));
   }

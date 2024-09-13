@@ -40,7 +40,8 @@ class PublicKeyCredentialCreationOptions {
   });
 
   factory PublicKeyCredentialCreationOptions.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$PublicKeyCredentialCreationOptionsFromJson(json);
 
   Map<String, dynamic> toJson() =>

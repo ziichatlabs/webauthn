@@ -70,9 +70,11 @@ class WebAPI {
       ];
     } else {
       credTypesAndPubKeyAlgs = pkOptions.pubKeyCredParams
-          .where((e) =>
-              e.alg == WebauthnCryptography.signingAlgoId &&
-              e.type == PublicKeyCredentialType.publicKey)
+          .where(
+            (e) =>
+                e.alg == WebauthnCryptography.signingAlgoId &&
+                e.type == PublicKeyCredentialType.publicKey,
+          )
           .map((e) => e.toAlgoPair())
           .toList();
 
@@ -172,9 +174,10 @@ class WebAPI {
     // Step 9-11
     final collectedClientData =
         CollectedClientData.fromCredentialRequestOptions(
-            origin: origin,
-            sameOriginWithAncestor: sameOriginWithAncestor,
-            options: pkOptions);
+      origin: origin,
+      sameOriginWithAncestor: sameOriginWithAncestor,
+      options: pkOptions,
+    );
 
     // Step 17.2
     late bool requireUserVerification = true;
@@ -205,13 +208,14 @@ class WebAPI {
     Assertion assertion,
   ) async {
     return AssertionResponse(
-        rawId: assertion.selectedCredentialId,
-        type: PublicKeyCredentialType.publicKey,
-        response: AssertionResponseData(
-          authenticatorData: assertion.authenticatorData,
-          clientDataJSON: collectedClientData.encode(),
-          signature: assertion.signature,
-          userHandle: assertion.selectedCredentialUserHandle,
-        ));
+      rawId: assertion.selectedCredentialId,
+      type: PublicKeyCredentialType.publicKey,
+      response: AssertionResponseData(
+        authenticatorData: assertion.authenticatorData,
+        clientDataJSON: collectedClientData.encode(),
+        signature: assertion.signature,
+        userHandle: assertion.selectedCredentialUserHandle,
+      ),
+    );
   }
 }

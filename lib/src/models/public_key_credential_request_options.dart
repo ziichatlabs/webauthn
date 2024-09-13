@@ -27,7 +27,8 @@ class PublicKeyCredentialRequestOptions {
   });
 
   factory PublicKeyCredentialRequestOptions.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$PublicKeyCredentialRequestOptionsFromJson(json);
 
   Map<String, dynamic> toJson() =>
